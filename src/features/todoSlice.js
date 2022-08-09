@@ -12,7 +12,9 @@ export const todoSlice = createSlice({
             return { items: state.items.concat(action.payload) }
         },
         remove: (state, action) => {
-            return { items: [...state].items.slice(action.payload) }
+            var l = [...state.items]
+            l.splice(action.payload, 1)
+            return { items: [...l] }
         },
         clear: () => {
             return {items: []}

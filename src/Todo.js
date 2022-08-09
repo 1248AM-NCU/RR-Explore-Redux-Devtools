@@ -7,15 +7,17 @@ function Todo() {
     const dispatch = useDispatch()
     const [input, setInput] = useState("")
 
+    
     return(
         <div>
             <form onSubmit={(e) => {e.preventDefault(); dispatch(add(String(input)));}}>
                 <input type="text" onChange={(e) => setInput(e.target.value)}></input>
                 <button type="submit">Submit new item to To Do</button>
             </form>
-            <list>
-                
-            </list>
+            <button type="clear" onClick={() => {dispatch(clear())}}>Clear List</button>
+            <ul>
+                {todoList.map((item,index) => <li key={index} onClick={() => dispatch(remove(Number(index)))}>{item}</li>)}
+            </ul>
         </div>
     )
 }
